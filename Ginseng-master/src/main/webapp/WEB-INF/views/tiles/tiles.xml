@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+
+<tiles-definitions>  
+ 	
+	<!--  	Start template -->
+	<definition name="mainLayout" template="/WEB-INF/views/tiles/layouts/main.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/layouts/header.jsp" />
+		<put-attribute name="cateAndSlide" value=""/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="news" value="/WEB-INF/views/tiles/layouts/newsletter.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/layouts/footer.jsp" />
+	</definition>
+	
+	<definition name="blankLayout" template="/WEB-INF/views/tiles/layouts/main.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="cateAndSlide" value=""/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="news" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="admin_blankLayout" template="/WEB-INF/views/tiles/layouts/admin_main.jsp">
+		<put-attribute name="more" value=""  />
+		<put-attribute name="header" value=""  />
+		<put-attribute name="navbar-left" value="" />
+		<put-attribute name="body" value="" />
+		
+	</definition>
+	<definition name="admin_dashboard" template="/WEB-INF/views/tiles/layouts/admin_main.jsp">
+		<put-attribute name="more" value=""  />
+		<put-attribute name="navbar-left" value="/WEB-INF/views/tiles/layouts/admin_navbar.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/tiles/layouts/admin_header.jsp"  />
+		<put-attribute name="body" value="" />
+	</definition>
+	<!--  	End template -->
+	
+	
+	<!-- Start client -->
+	
+	<definition name="home" extends="mainLayout">
+		<put-attribute name="cateAndSlide" value="/WEB-INF/views/tiles/layouts/cateAndSlide.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/pages/customer/home.jsp" />
+	</definition>
+	
+	<!-- end client -->
+	
+	<!-- Start admin -->
+	
+	<definition name="add_user_form" extends="blankLayout">
+		<put-attribute name="body" value="/WEB-INF/views/pages/admin/add_user.jsp" />
+	</definition>
+	
+	
+	<definition name="dashboard" extends="admin_dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/pages/admin/dashboard/dashboard.jsp" />
+	</definition>
+	
+	<definition name="userManagement" extends="admin_dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/pages/admin/user/users_manage.jsp" />
+	</definition>
+	
+	<definition name="productManage" extends="admin_dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/pages/admin/products_manage.jsp" />
+	</definition>
+	
+<!-- 	Food -->
+<definition name="add_food_form" extends="admin_dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/pages/admin/food/new.jsp" />
+	</definition>
+	
+<definition name="foods" extends="admin_dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/pages/admin/food/index.jsp" />
+</definition>
+	
+
+<!-- Warehouse -->
+		
+	<definition name="warehouse" extends="admin_dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/pages/admin/warehouse/index.jsp" />
+	</definition>
+
+
+
+
+
+
+
+	
+	
+<!-- 	Customer -->
+	
+<definition name="customers" extends="admin_dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/pages/customer/index.jsp" />
+</definition>
+
+
+
+
+	
+	<!-- End admin -->
+	
+	
+	<!-- Start	Error notification -->
+	
+	<definition name="login" extends="admin_blankLayout">
+		<put-attribute name="more" value="/WEB-INF/views/pages/login/login.jsp" />
+	</definition>
+	
+	<definition name="403" extends="admin_blankLayout">
+		<put-attribute name="more" value="/WEB-INF/views/pages/error/403.jsp" />
+	</definition>
+	
+	<definition name="404" extends="admin_blankLayout">
+		<put-attribute name="more" value="/WEB-INF/views/pages/error/404.jsp" />
+	</definition>
+	
+	<definition name="500" extends="admin_blankLayout">
+		<put-attribute name="more" value="/WEB-INF/views/pages/error/500.jsp" />
+	</definition>
+	
+	<!-- End	Error notification -->
+</tiles-definitions>
+
