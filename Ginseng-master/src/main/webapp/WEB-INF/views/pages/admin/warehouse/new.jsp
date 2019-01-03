@@ -11,42 +11,32 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                       <form action="<c:url value='/admin/foods/action-add-food' />" method="POST" role="form" enctype="multipart/form-data">
+                       <form action="<c:url value='/admin/warehouse/action' />" method="POST" role="form" enctype="multipart/form-data">
                         
                           <div class="form-body">
 									<div class="form-group row">
-										<label class="col-md-3 label-control" for="name">Tên
-											món(*)</label>
+										<label class="col-md-3 label-control" for="material_id">Tên nguyên liệu</label>
 										<div class="col-md-9">
-											<input type="text" name="name" placeholder="Tên món ăn"
+											<input type="text" name="material_id" placeholder="Tên nguyên liệu"
  												class="form-control" /> 
 										</div>
 									</div>
 									
 									<div class="form-group row">
-										<label class="col-md-3 label-control" for="unit_price">Giá tiền
-										(*)</label>
+										<label class="col-md-3 label-control" for="amount">Khối lượng</label>
 										<div class="col-md-9">
-											<input type="text"  name="unit_price" placeholder="Giá tiền"
+											<input type="text"  name="amount" placeholder="Khối lượng"
 											class="form-control" /> 
 										</div>
 									</div>
-									
-									
-									<div class="form-group row">
-										<label class="col-md-3 label-control" for="image">Image
-											Food(*)</label>
-										<div class="col-md-9">
-											<input type="file" accept="image/*" name="file" id="file" name="file" onchange="changeFile()" /><br />
-										</div>
-									</div>
-		
-					 
+							</div>
 							
-								</div>
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
-                                <button type="submit" class="btn btn-primary">Add this user</button> 
-                            </div> 
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+								<span>
+                            		<button type="submit" name="import" value="import" class="btn btn-primary">Nhập kho</button> 
+                            		<button type="submit" name="export" value="export" class="btn btn-primary">Xuất kho</button> 
+                            	</span>
+                            </div>
 		
 						</form>
                         </div>

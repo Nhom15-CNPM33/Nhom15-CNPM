@@ -67,7 +67,7 @@
 <!-- 	Food -->
 <definition name="add_food_form" extends="admin_dashboard">
 		<put-attribute name="body" value="/WEB-INF/views/pages/admin/food/new.jsp" />
-	</definition>
+</definition>
 	
 <definition name="foods" extends="admin_dashboard">
 		<put-attribute name="body" value="/WEB-INF/views/pages/admin/food/index.jsp" />
@@ -78,6 +78,10 @@
 		
 	<definition name="warehouse" extends="admin_dashboard">
 		<put-attribute name="body" value="/WEB-INF/views/pages/admin/warehouse/index.jsp" />
+	</definition>
+	
+	<definition name="import_warehouse_form" extends="admin_dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/pages/admin/warehouse/new.jsp" />
 	</definition>
 
 

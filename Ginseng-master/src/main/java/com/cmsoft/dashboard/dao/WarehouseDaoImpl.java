@@ -26,8 +26,8 @@ public class WarehouseDaoImpl  extends AbstractDao<Integer, Warehouse>  implemen
 	}
 		
 	@Override
-	public void save(Warehouse food) {
-		sessionFactory.getCurrentSession().saveOrUpdate(food);
+	public void save(Warehouse warehouse) {
+		sessionFactory.getCurrentSession().saveOrUpdate(warehouse);
 	}
 
 	public Warehouse findWarehouseById(int id) {

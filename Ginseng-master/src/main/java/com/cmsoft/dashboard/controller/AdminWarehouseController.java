@@ -82,6 +82,16 @@ public class AdminWarehouseController extends BaseController {
 
 		return model;
     }
+
+	@RequestMapping(value = "/action", params = "import")
+	public String importWarehouse() {
+		return "redirect:/action-import-warehouse";
+	}
+	
+	@RequestMapping(value = "/action", params = "export")
+	public String exportWarehouse() {
+		return "redirect:/action-export-warehouse";
+	}
 	
 	@RequestMapping(value = "/action-import-warehouse")
     public String importWarehouse(int material_id,float amount) {
@@ -92,7 +102,7 @@ public class AdminWarehouseController extends BaseController {
 		newWarehouse.setEmployee(getCurrentUser());
 		newWarehouse.setCreatedAt(new Date());
 		warehouseService.save(newWarehouse);
-        return "redirect:/admin";
+        return "redirect:/import-export-warehouse";
     }
 	
 	@RequestMapping(value = "/action-export-warehouse")
@@ -104,8 +114,9 @@ public class AdminWarehouseController extends BaseController {
 		newWarehouse.setEmployee(getCurrentUser());
 		newWarehouse.setCreatedAt(new Date());
 		warehouseService.save(newWarehouse);
-        return "redirect:/admin";
+        return "redirect:/import-export-warehouse";
     }
+	
 	
 }
 

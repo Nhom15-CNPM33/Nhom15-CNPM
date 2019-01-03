@@ -18,34 +18,29 @@
                                     <thead>
                                         <tr>
                                             <th class="cen"></th>
-                                            <th class="cen">Username</th>
-                                            <th class="cen">email</th>
-                                            <th class="cen">Fullname</th>
-                                            <th class="cen">Role</th>
-                                            <th class="cen">Phone</th>
-                                            <th></th>
+                                            <th class="cen">Tên nguyên liệu</th>
+                                            <th class="cen">Số lượng</th>
+                                            <th class="cen">Trạng thái</th>
+                                            <th class="cen">Ngày khởi tạo</th>
+                                            <th class="cen">Người khởi tạo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${foods}" var="food">
+                                        <c:forEach items="${warehouse}" var="warehouse">
                                         <tr class="tr-shadow">
-
-											<td class="cen"></td>
+                                        
+                                        	<td class="cen"></td>
+                                                                                
+											<td class="cen">${warehouse.getMaterial().getName()}</td>
 												
-                                            <td class="cen">${food.getName()}</td>
+                                            <td class="cen">${warehouse.getAmount()}</td>
 
-                                            <td class="cen">
-                                                <span class="block-email">${food.getName()}</span>
-                                            </td>
+                                            <td class="cen">${warehouse.getStatus()}</td>
 
-                                            <td class="desc cen">${food.getName()}</td>
+                                            <td class="desc cen">${warehouse.getCreatedAt()}</td>
                                             
-                                            <td class="cen">
-													<img src="<c:url value="${food.getImage()}" />"
-														style="max-width: 80px; max-height: 80px;" />
-
-											</td>
-
+                                            
+                                            <td class="cen">${warehouse.getEmloyee().getFullName()}</td>
                                         </tr>                                  
                                         <tr class="spacer"></tr>
                                     </c:forEach>
