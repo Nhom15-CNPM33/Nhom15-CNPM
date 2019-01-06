@@ -66,8 +66,9 @@ public class AdminWarehouseController extends BaseController {
 	@RequestMapping(value = "")
     public String userManagement(Model model) {
         List<Warehouse> warehouses=warehouseService.findAll();
-        
+        List<Material> materials= materialService.findAll();
         model.addAttribute("warehouse", warehouses);
+        model.addAttribute("materials", materials);
         return "warehouse";
     }
 	
@@ -78,43 +79,56 @@ public class AdminWarehouseController extends BaseController {
 		ModelAndView model = new ModelAndView();
 		Warehouse b = new Warehouse();
 		modelMap.addAttribute("warehouse", b);
+	        List<Material> materials= materialService.findAll();
+	        modelMap.addAttribute("materials", materials);
+		
 		model.setViewName("import_warehouse_form");
 
 		return model;
     }
 
-	@RequestMapping(value = "/action", params = "import")
-	public String importWarehouse() {
-		return "redirect:/action-import-warehouse";
-	}
+//	@RequestMapping(value = "/action", params = "import")
+//	public String importWarehouse() {
+//		return "redirect:/admin/warehouse/action-import-warehouse";
+//	}
+//	
+//	@RequestMapping(value = "/action", params = "export")
+//	public String exportWarehouse() {
+//		return "redirect:/admin/warehouse/action-export-warehouse";
+//	}
 	
-	@RequestMapping(value = "/action", params = "export")
-	public String exportWarehouse() {
-		return "redirect:/action-export-warehouse";
-	}
-	
-	@RequestMapping(value = "/action-import-warehouse")
-    public String importWarehouse(int material_id,float amount) {
+	@RequestMapping(value = "/action-import-warehouse", method = RequestMethod.POST)
+	public ResponseEntity<BaseResponse> importWarehouse(float amount, int material_id) {
+
+		BaseResponse response = new BaseResponse();
+		response.setStatus(ResponseStatusEnum.SUCCESS);
+		response.setMessage(ResponseStatusEnum.SUCCESS);
+		response.setData(null);
+
 		Warehouse newWarehouse = new Warehouse();
 		newWarehouse.setMaterial(materialService.findOneById(material_id));
 		newWarehouse.setAmount(amount);
 		newWarehouse.setStatus(1); // 1 = import
-		newWarehouse.setEmployee(getCurrentUser());
+		newWarehouse.setEmployee(getUser());
 		newWarehouse.setCreatedAt(new Date());
 		warehouseService.save(newWarehouse);
-        return "redirect:/import-export-warehouse";
+		return new ResponseEntity<BaseResponse>(response, HttpStatus.OK);
     }
 	
-	@RequestMapping(value = "/action-export-warehouse")
-    public String exportWarehouse(int material_id,float amount) {
+	@RequestMapping(value = "/action-export-warehouse", method = RequestMethod.POST)
+	public ResponseEntity<BaseResponse> exportWarehouse(float amount, int material_id) {
+		BaseResponse response = new BaseResponse();
+		response.setStatus(ResponseStatusEnum.SUCCESS);
+		response.setMessage(ResponseStatusEnum.SUCCESS);
+		response.setData(null);
 		Warehouse newWarehouse = new Warehouse();
 		newWarehouse.setMaterial(materialService.findOneById(material_id));
 		newWarehouse.setAmount(amount);
 		newWarehouse.setStatus(0); // 0 = export
-		newWarehouse.setEmployee(getCurrentUser());
+		newWarehouse.setEmployee(getUser());
 		newWarehouse.setCreatedAt(new Date());
 		warehouseService.save(newWarehouse);
-        return "redirect:/import-export-warehouse";
+		return new ResponseEntity<BaseResponse>(response, HttpStatus.OK);
     }
 	
 	
